@@ -1,0 +1,8 @@
+# Configuration draft. A segment is a heading-distance-depth command, not a
+# geographic waypoint. Automatic task actions are not enabled in the safe
+# controller yet, so keep tasks empty.
+segments:
+  - heading_deg: 0.0
+    distance_m: 0.5
+    depth_m: 0.2
+    tasks: []

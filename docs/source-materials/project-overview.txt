@@ -1,0 +1,13 @@
+
+
+01硬件电路与主要元件：包含主要元器件资料，电路连接
+
+02软件设置与使用：包含Vscode ssh配置与QGC使用
+
+03通信：包含关于设备中mavlink通信链路以及mavlink router的配置
+
+04程序开发：包含基于pymalink库的相关控制测试程序
+
+
+说明： 树莓派中安装的是Ubuntu24.04 与CPS5资料中的BlueOs不同。
+           Ardusub与CPS5固件版本相同。开发手册：https://www.ardusub.com/

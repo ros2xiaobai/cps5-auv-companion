@@ -1,0 +1,62 @@
+# Copy this file to vehicle.local.yaml and adapt it to the actual vehicle.
+# The local file is ignored by Git.
+mavlink:
+  endpoint: "udpin:0.0.0.0:14553"
+  heartbeat_timeout_s: 10.0
+
+dvl:
+  enabled: true
+  required: false
+  host: "192.168.137.3"
+  port: 16171
+  connect_timeout_s: 3.0
+  receive_timeout_s: 0.1
+  # The prototype uses the local x coordinate as forward displacement. Verify
+  # the installed DVL frame before changing dvl_axis_validated to true.
+  forward_sign: 1.0
+
+monitoring:
+  poll_interval_s: 0.05
+  status_interval_s: 1.0
+
+control:
+  mode: "STABILIZE"
+  throttle_channel: 3
+  yaw_channel: 4
+  forward_channel: 5
+  rc_min: 1100
+  rc_neutral: 1500
+  rc_max: 1900
+  heading_threshold_deg: 3.0
+  depth_threshold_m: 0.1
+  distance_threshold_m: 0.1
+  heading_timeout_s: 8.0
+  move_timeout_s: 20.0
+  sensor_timeout_s: 1.0
+  startup_timeout_s: 10.0
+  mode_timeout_s: 5.0
+  arm_timeout_s: 10.0
+  depth_kp: 500.0
+  depth_ki: 5.0
+  depth_kd: 0.0
+  depth_max_pwm_delta: 150
+  forward_kp: 230.0
+  forward_max_pwm_delta: 60
+
+depth:
+  # This mirrors the prototype's -AHRS2.altitude conversion. It remains
+  # unverified for the actual firmware, zero reference and sign convention.
+  scale: -1.0
+  offset_m: 0.0
+
+camera:
+  index: 0
+  output_dir: "photos"
+
+safety:
+  # The new monitor entry point rejects true here. Actuation will be migrated
+  # in a later stage behind a separate explicit command and confirmation.
+  allow_actuation: false
+  rc_mapping_validated: false
+  depth_mapping_validated: false
+  dvl_axis_validated: false

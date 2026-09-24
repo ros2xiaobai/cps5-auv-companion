@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cps5-auv-companion"
+version = "0.1.0"
+description = "Companion-computer software for a CPS5-based hybrid AUV/ROV prototype"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pymavlink",
+    "opencv-python",
+    "PyYAML>=6.0",
+]
+
+[project.scripts]
+cps5-monitor = "cps5_companion.cli:main"
+cps5-control = "cps5_companion.control_cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
